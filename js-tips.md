@@ -47,3 +47,37 @@ jika kita mengganti nilai undefined menjadi '' maka sebagai berikut
 ```
 '' + 'a' + '' + 'a' + ''
 ```
+
+## Array Hack : Array and Object is References variable
+
+Example:
+```
+let arr = [1, 2, 3, 4, 5]
+let cloneArr = arr;
+
+console.log(arr); // Output: [1, 2, 3, 4, 5]
+console.log(cloneArr); // Output: [1, 2, 3, 4, 5]
+```
+
+And if we modified the arr value the cloneArr will be affect
+
+Example:
+```
+arr.push(6);
+
+console.log(arr); // Output: [1, 2, 3, 4, 5, 6]
+console.log(cloneArr); // Output: [1, 2, 3, 4, 5, 6]
+```
+
+If we want to copy the array value but dont want to references it. We can copy it with Array.prototype.slice() || Array.splice()
+
+Example:
+```
+let arr = [1, 2, 3, 4, 5];
+let copyArr = arr.slice(); // arr.slice() is same as arr.slice(0) and same as arr.slice(0, arr.length - 1)
+
+arr.push(6);
+
+console.log(arr); // Output: [1, 2, 3, 4, 5, 6]
+console.log(copyArr); // // Output: [1, 2, 3, 4, 5];
+```
