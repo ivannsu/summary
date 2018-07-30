@@ -81,3 +81,27 @@ arr.push(6);
 console.log(arr); // Output: [1, 2, 3, 4, 5, 6]
 console.log(copyArr); // // Output: [1, 2, 3, 4, 5];
 ```
+
+## Arrow function EcmaScript 2015 or ES6
+Short hand to write function in JavaScript
+
+Example:
+```
+// Old Style
+function test(param1, param2) {
+  return param1 + param2;
+}
+
+// Arrow function Style
+const test = (param1, param2) => {
+  return param1 + param2;
+}
+
+// Arrow function Style, if have one statement
+const test = (param1, param2) => param1 + param2;
+
+/**
+ * We use const, so the function cannot be replaced !
+ * if have one statement we can ignored the {} and return
+ */
+```
