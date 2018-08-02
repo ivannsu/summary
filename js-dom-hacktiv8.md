@@ -4,5 +4,4 @@ menggunakan JavaScript.
 
 **Gambar Hirarki DOM**
 
-![Gambar Hirarki DOM]
-(https://github.com/ivannsu/summary/blob/master/assets/images/html-dom.png)
+![Gambar Hirarki DOM](https://github.com/ivannsu/summary/blob/master/assets/images/html-dom.png)
