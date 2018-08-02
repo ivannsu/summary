@@ -85,3 +85,22 @@ Page Box 2
 Page Box 3
 */
 ```
+
+## Memanipulasi isi elemen HTML
+Cara manipulasi hampir sama dengan mengakses, tetapi menambahkan operator assignment `=`
+
+**Manipulasi isi `<div id="page-title">`**
+```
+pageTitleElement.innerHTML = 'Judul baru nih!';
+
+console.log(pageTitleElement); // <div id="page-title">Judul baru nih!</div>
+console.log(pageTitleElement.innerHTML); // Judul baru nih!
+```
+
+Kita juga dapat mengisi nya dengan elemen HTML.
+```
+pageTitleElement.innerHTML = '<h2>Ubah lagi judul nya!</h2>';
+
+console.log(pageTitleElement); // <div id="page-title"><h2>Ubah lagi judul nya!</h2></div>
+console.log(pageTitleElement.innerHTML); // <h2>Ubah lagi judul nya!</h2>
+```
