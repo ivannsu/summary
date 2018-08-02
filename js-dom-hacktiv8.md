@@ -56,3 +56,32 @@ bentuk array
 **Catatan**
 
 Meskipun elemen yang diakses hanya satu tetapi tetap dalam output array
+
+## Mengakses isi elemen HTML
+```
+console.log(pageTitleElement.innerHTML);
+// Output: Sample Page Title
+
+console.log(pageBoxElements.innerHTML);
+// Output: undefined
+// Karena dalam bentuk array
+
+console.log(pageBoxElements[0].innerHTML);
+// Output: Page Box 1
+```
+
+**Supaya mudah kita juga bisa mendapatkan isi dan elemen `pageBoxElements` dengan cara looping**
+
+```
+for(let i = 0; i < pageBoxElements.length; i++) {
+  console.log(pageBoxElements[i]);
+}
+
+/* 
+Output:
+
+Page Box 1
+Page Box 2
+Page Box 3
+*/
+```
