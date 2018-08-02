@@ -1,4 +1,4 @@
-# JavaScript DOM
+# JavaScript DOM (Hacktiv8 Curriculum Reference)
 Dengan DOM kita dapat mengakses elemen-elemen HTML dan juga BOM (Browser Object Model)
 menggunakan JavaScript.
 
