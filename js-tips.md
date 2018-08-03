@@ -105,3 +105,99 @@ const test = (param1, param2) => param1 + param2;
  * if have one statement we can ignored the {} and return
  */
 ```
+
+## JavaScript DOM
+When you using looping to create event with .addEventListener(), there is some bug, your application will be run
+unexpected!
+
+here is the example
+```
+let optionsElm = document.getElementsByClassName('answer');
+
+for(let i = 0; i < optionsElm.length; i++) {
+  optionsElm[i].innerHTML = quiz.getOptions()[i];
+  optionsElm[i].addEventListener('click', function() {
+    if(quiz.checkAnswer(optionsElm[i].innerHTML)) {
+      quiz.scores++;
+    }
+    quiz.changeQuestion();
+    populate();
+  });
+}
+```
+
+the correct example is using **onclick**
+```
+let optionsElm = document.getElementsByClassName('answer');
+
+for(let i = 0; i < optionsElm.length; i++) {
+  optionsElm[i].innerHTML = quiz.getOptions()[i];
+  optionsElm[i].onclick = function() {
+    if(quiz.checkAnswer(optionsElm[i].innerHTML)) {
+      quiz.scores++;
+    }
+    quiz.changeQuestion();
+    populate();
+  }
+}
+```
+
+## JavaScript DOM to Manipulate CSS
+**When you want to manipulate CSS, you must define it first from JavaScript file not .css file !**
+
+here is **failed** example:
+
+**style.css**
+```
+#myDiv {
+  display: block;
+}
+
+or
+
+#mydiv {
+  // Nothing property
+}
+```
+**script.js**
+```
+function toggleDisplay() {
+   let resultContainer = document.getElementById('myDiv');
+  
+  if(resultContainer.style.display === 'none') {
+    resultContainer.style.display = 'block';
+    selectContainer.style.display = 'none';
+  } else {
+    resultContainer.style.display = 'none';
+    selectContainer.style.display = 'block';
+  }
+}
+```
+
+and the **correct** example: 
+
+**index.html**
+```
+<div id="myDiv">
+  Some text
+</div>
+```
+
+**script.js**
+```
+// Set default style for #myDiv
+document.getElementById('myDiv').style.display = 'none';
+
+// Create function to manipulate it easily
+function toggleDisplay() {
+  let resultContainer = document.getElementById('myDiv');
+
+  if(resultContainer.style.display === 'none') {
+    resultContainer.style.display = 'block';
+    selectContainer.style.display = 'none';
+  } else {
+    resultContainer.style.display = 'none';
+    selectContainer.style.display = 'block';
+  }
+}
+```
