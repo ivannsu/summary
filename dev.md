@@ -1,3 +1,13 @@
+Packages List Shorthand
+```
+npm install --save express mongodb mongoose dotenv axios request jsonwebtoken cors
+```
+
+Packages List Utilities
+* nodemon
+* live-server (--cors)
+
+
 # Axios
 ## Handling THEN
 ```
