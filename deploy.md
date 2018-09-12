@@ -26,3 +26,25 @@ app.listen(process.env.PORT || '3000');
 * Untuk menambahkan env kita sendiri, masuk ke dashboard heroku pilih name nya 
 (didapat saat kita menggunakan perintah `heroku create`)
 * pilih `settings` kemudian tekan tombol `reveal configs` masukan sesuai dengan key dan value env local kita
+
+## Deploy Client menggunakan Firebase
+* Buka website firebase https://firebase.google.com/ login dengan akun google, kemudian piih tombol get started
+* Buat project baru
+* install firebase command line tool
+  ```
+  npm install -g firebase-tools
+  ```
+* login ke firebase dengan akun gmail
+  ```
+  firebase login
+  ```
+* deploy dengan command line berikut
+  ```
+  firebase init
+  // Pilih option dengan cara select mengguakana arrow down atau arrow up, kemudian tekan space untuk menyelect opsi hosting
+  // kemudian baru enter
+  
+  firebase deploy
+  . untuk non allow
+  kemudian no sampai web tidak ada options yang ditawarkan
+  ```
