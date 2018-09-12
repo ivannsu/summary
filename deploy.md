@@ -1,5 +1,24 @@
 # Deploy Website
 
+Hal-hal yang perlu diperhatikan saat kita mendeploy website
+
+**SERVER**:
+
+* Set PORT untuk PRODUCTION (best pratice menggunakan .ENV)
+* Set connection mongoose ke mLAB
+* file .env
+* package.json diisi dengan script start
+  ```
+  scripts: {
+    start: "node app.js"
+  }
+  ```
+  
+**CLIENT**
+
+* Membuat variable `baseurl` untuk menampung link koneksi ke API kita
+* Menggunakan assets yang sebisa mungkin sudah berbasis CDN, untuk gambar sekalipun
+
 ## Deploy Server ke Heroku
 Heroku tidak dapat digunakan untuk mendeploy web static (html, css)
 
@@ -48,3 +67,63 @@ app.listen(process.env.PORT || '3000');
   . untuk non allow
   kemudian no sampai web tidak ada options yang ditawarkan
   ```
+
+## Menggunakan mLab untuk database online mongoDB
+* Masuk ke website nya mLab 
+* Buat account mLab
+* dibagian MongoDB Deployments buat project baru dengan type sandBox (free)
+* kemudian dibagian users buat user baru, nanti nya user dan password nya akan dipakai untuk dikoneksikan ke mongoose
+  dengan format sebagai berikut 
+  `mongodb://<dbuser>:<dbpassword>@ds153552.mlab.com:53552/[isi nama database yang ingin kamu buat disini]`
+* link mongodb nya dapat dilihat dibagian atas
+
+## Deploy server dan client menggunakan fasilitas Google Cloud Platform
+* masuk ke website nya cloud.google.com
+* login dengan akun gmail
+* kemudian pilih try for free, masa trial nya adalah 12 bulan dan langsung mendapat biling senilai $300, nantinya
+billing ini akan kita gunakan untuk menyewa server dll
+* untuk try for free kita diharuskan untuk memiliki kartu kredit atau visa
+* kemudian setela teregister, masuk ke bagian console
+
+* buat project baru
+* di menu sidebar pilih `Compute Engine`/`VM Instance`
+* creat instance
+* berikan nama instance biasanya sesuai dengan nama project saat ini, contoh: e-commerce-server
+* region singapore (terdekat dengan negara kita)
+* machine type : micro (paling murah)
+* Boot disk pilih os nya dan storage nya contoh : ubuntu 16.04 10 GB Storage
+* Dibagian advanced setting, pilih menu network, isi network tags sesuai nama project kita saat ini, ini akan digunakan untuk
+  mengganti port default node js (3000) ke port 80, sehingga kita tidak perlu menambahkan port saat kita mengakses URL
+* firewall, allow https dan http
+* kemudian create 
+* setelah tercreate tekan tombol SSH untuk masuk ke terminal virtual server kita
+* install node js berserta npm sesuai os virtual host kita (dalam kasus ini ubuntu 16)
+* clone repo kita yang ingin di deploy, install package nya dengan perintah npm install
+* kita dapat langsung mensetting port yang akan digunakan ke port 80 atau membuat port baru (misal mendaftarkan port 3000)
+  - **PORT: 80**
+  dengan menambakan file .env kemudian tambahkan key PORT
+
+* kemudian buat domain baru
+* dibagian DNS Management, input format biasanya adalah <name> <type> <target>
+  <name> biasanya adalah sub domain dari main domain kita
+  <type> kareana target kita adalah IP dari VM Instance kita maka pilihan nya adalah A (untuk HOST)
+  <target> masukan IP VM instance
+  contoh server A 192.168.0.1 maka jika diakses menjadi server.domainkita.com
+* CNAME akan kita gunnakan untuk menghubunkan nya ke Cloud Storage nya Google
+* ada dua CNAME yang akan kita pakai, satu untuk menghubunkan ke CLIENT (deploy client) satu untuk verifikasi domain kita
+    
+* Untuk deploy client, silakan ke menu sidebar - Storage
+* Buat bucket baru dengan menekan tombol create bucket
+* dibagian name isi dengan link client yang mau kita akses, contoh jika saya mau client saya nanti diisi
+  dengan client.domainkita.com maka isi dengan value tersebut,
+  **Note:** subdomain ini di tambahkan dengan CNAME
+* isi CNAME dengan format berikut <host> <point to>
+  <host> dalam kasus ini adalah `client` (diambil dari client.domainkita.com) kemudian <point to> diisi dengan    
+  `c.storage.googleapis.com` <-- ini adalah bawaan dari google
+                                                                                                                             * kembali ke menu bucket tadi, kita diharuskan untuk memverifikasi domain kita dengan cara 
+                                                                                                                             * Jika kita menekan tombol sekarang, maka akan muncul link berwarna merah disekitar tombol create, ini dikarenakan 
+                                 kita belum memverifikasi domain kita, klik link tersebut, kemudian akan diarahkan ke 
+                                 form untuk mengisi nama main domain kita, dalam kasus ini yaitu domainkita.com
+                                 pilih pilihan verifikasi dengan pilihan by Hosting Provider, kemudian cari pilihan verifikasi dengan CNAME, nah copy host dan point to nya , kemudian masukan ke dalam DNS management kita lagi dibagian CNAME
+                                                                                                                             
+                                                                                                                             
