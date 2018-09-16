@@ -99,10 +99,13 @@ billing ini akan kita gunakan untuk menyewa server dll
 * setelah tercreate tekan tombol SSH untuk masuk ke terminal virtual server kita
 * install node js berserta npm sesuai os virtual host kita (dalam kasus ini ubuntu 16)
 * clone repo kita yang ingin di deploy, install package nya dengan perintah npm install
+* install pm2 secara global untuk menjalankan node js meskipun server di close
 * kita dapat langsung mensetting port yang akan digunakan ke port 80 atau membuat port baru (misal mendaftarkan port 3000)
-  - **PORT: 80**
+  - **PORT: 80** (deprecated)
   dengan menambakan file .env kemudian tambahkan key PORT
-
+* gunakan sudo su untuk masuk ke mode admin, kemudian 
+  - export PORT=80 (set default port ke 80)
+  - echo $PORT (jika hasil nya adalah 80 berarti ok)
 * kemudian buat domain baru
 * dibagian DNS Management, input format biasanya adalah <name> <type> <target>
   <name> biasanya adalah sub domain dari main domain kita
@@ -121,9 +124,12 @@ billing ini akan kita gunakan untuk menyewa server dll
   <host> dalam kasus ini adalah `client` (diambil dari client.domainkita.com) kemudian <point to> diisi dengan    
   `c.storage.googleapis.com` <-- ini adalah bawaan dari google
                                                                                                                              * kembali ke menu bucket tadi, kita diharuskan untuk memverifikasi domain kita dengan cara 
-                                                                                                                             * Jika kita menekan tombol sekarang, maka akan muncul link berwarna merah disekitar tombol create, ini dikarenakan 
+                                                                                                                             * Jika kita menekan tombol create sekarang, maka akan muncul link berwarna merah disekitar tombol create, ini dikarenakan 
                                  kita belum memverifikasi domain kita, klik link tersebut, kemudian akan diarahkan ke 
-                                 form untuk mengisi nama main domain kita, dalam kasus ini yaitu domainkita.com
-                                 pilih pilihan verifikasi dengan pilihan by Hosting Provider, kemudian cari pilihan verifikasi dengan CNAME, nah copy host dan point to nya , kemudian masukan ke dalam DNS management kita lagi dibagian CNAME
-                                                                                                                             
+                                 form untuk add property digunakan untuk mengisi nama main domain kita, dalam kasus ini yaitu domainkita.com
+                                 pilih pilihan alternate-methods -> verifikasi dengan pilihan by Hosting Provider -> select other, kemudian dibagian bawah, pilih CNAME Record , kemudian cari pilihan verifikasi dengan CNAME, nah copy host dan point to nya , kemudian masukan ke dalam DNS management kita lagi dibagian CNAME
+
+* sekarang setelah requeirement verifikasi sudah dilakukan, kembali lagi ke bucket, dan create, kemudian continue
+* upload file website static kita
+* setelah terupload silahkan mengubah permisiion file public dengan menekan options, kemudian pilih edit permissions, kemudian add item, dibagian entitiy isi dengan `user`, name isi dengan `allUsers` , access pilih `READER`
                                                                                                                              
