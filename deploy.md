@@ -132,4 +132,7 @@ billing ini akan kita gunakan untuk menyewa server dll
 * sekarang setelah requeirement verifikasi sudah dilakukan, kembali lagi ke bucket, dan create, kemudian continue
 * upload file website static kita
 * setelah terupload silahkan mengubah permisiion file public dengan menekan options, kemudian pilih edit permissions, kemudian add item, dibagian entitiy isi dengan `user`, name isi dengan `allUsers` , access pilih `READER`
+* kemudian save
+* setelah semua permissions file sudah public, kembali ke menu awal bucket, pilih options dibagian name bucket kita
+  pilih `edit website configuration`
                                                                                                                              
