@@ -15,11 +15,11 @@ select manually select feature
 
 centang dengan spasi
 
-* History mode for router ? YES
-* Formatter config ? Standart Code
-* Additional lint features ? Lint on save
-* placing config for Babel. EsLint ? In dedicated config files
-* Save to feature Project ? No
+History mode for router ? YES
+Formatter config ? Standart Code
+Additional lint features ? Lint on save
+placing config for Babel. EsLint ? In dedicated config files
+Save to feature Project ? No
 
 Taruh file atau script diatas <!-- built files will be auto injected -->
 
@@ -35,7 +35,7 @@ router view untuk menampilkan hasil component nya
 /src/views - menampung komponen kecil hingga utuh , dipakai di Router.js
 
 scafold
-```
+
 <template>
   h1: Ini halaman
 </template>
@@ -43,10 +43,9 @@ scafold
 export default {
   name: 'heroes'
 }
-```
 
-```
-//router.js
+/router.js
+
 Import Heros from './vue/blablab'
 
 component: () => import './asdasdasdasd'
@@ -57,10 +56,10 @@ async component
 export default {
   name: 'list-heroes
 }
-```
+
 
 didalam ini haama heroes
-```
+
 import listHeroes form '@/components/listher'
 
 @ -> folder src
@@ -80,9 +79,7 @@ export default {
   }
 }
 // ------------------------------------------
-```
 
-```
 // views/Heroes.vue
 <template>
   <ListHeroes></ListHeroes>
@@ -95,7 +92,7 @@ export default {
     ListHeroes
   }
 }
-```
+
 <style scoped> style khusus component ini
 
 </style>
@@ -104,7 +101,7 @@ export default {
 .eslinetrc.js --------------> Ganti konfigurasi
 
 rm -rf .git
-```
+
 {
   path: '/heroes',
   name: 'heroes',
@@ -123,8 +120,10 @@ rm -rf .git
     }
   ]
 }
-```
-<router-link :to="{ name: 'detail', params: { userid: `${hero.id}` } }"> <!-- dynamic route -->
+
+<router-link :to="{ name: 'detail', params: { userid: `${hero.id}` } }"> 
+
+<!-- dynamic route -->
 
 export default {
   name: 'detail',
